@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid exercise</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: antiquewhite;
+        }
+        #grid{
+            display: grid;
+            width: 400px;
+            height: 400px;
+            gap: 4px;
+        }
+        .box{
+            aspect-ratio: 1/1;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="grid"></div>
+</body>
+<script>
+    let size = 2;
+     const grid = document.getElementById("grid")
+    function generateRandomColor() {
+        const colors = ['red','blue','pink','green','yellow','skyblue','purple']
+        return colors[Math.floor(Math.random()*colors.length)]
+    }
+    function createGrid(params) {
+        grid.style.gridTemplateColumns = `repeat(${size},1fr)`
+        const total = size*size
+        const darkIndex = Math.floor(Math.random()*total)
+        const color = generateRandomColor()
+
+        for (let i = 0; i < total; i++) {
+            const box = document.createElement('div')
+            box.className = "box"
+            box.style.backgroundColor = color
+
+            if (i===darkIndex) {
+                box.style.filter = "brightness(70%)"
+                box.onclick = function () {
+                    size++
+                    createGrid()
+                }
+            }
+            grid.appendChild(box)
+            
+        }
+
+    }
+    createGrid()
+
+</script>
+</html>
