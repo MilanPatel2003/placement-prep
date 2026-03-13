@@ -1,0 +1,71 @@
+-- =========================
+-- GENDERS
+-- =========================
+INSERT INTO genders (gender_name) VALUES
+('Male'),
+('Female'),
+('Other');
+
+
+-- =========================
+-- MARITAL STATUSES
+-- =========================
+INSERT INTO marital_statuses (marital_status_name) VALUES
+('Unmarried'),
+('Married'),
+('Divorced'),
+('Widowed');
+
+
+-- =========================
+-- COURSE TYPES
+-- =========================
+INSERT INTO course_types (course_type_name) VALUES
+('SSC'),
+('HSC'),
+('Diploma'),
+('BCA'),
+('BSc'),
+('BCom'),
+('BA'),
+('BTech'),
+('MCA'),
+('MSc'),
+('MBA'),
+('PhD');
+
+
+-- =========================
+-- LANGUAGES
+-- =========================
+INSERT INTO languages (language_name) VALUES
+('English'),
+('Hindi'),
+('Gujarati'),
+('Spanish'),
+('French'),
+('German'),
+('Chinese'),
+('Japanese');
+
+
+-- =========================
+-- PROFICIENCY LEVELS
+-- =========================
+INSERT INTO proficiency_levels (proficiency_level_name) VALUES
+('Beginner'),
+('Intermediate'),
+('Advanced'),
+('Expert');
+
+
+-- =========================
+-- REFERENCE RELATIONSHIPS
+-- =========================
+INSERT INTO reference_relationships (relationship_name) VALUES
+('Friend'),
+('Colleague'),
+('Manager'),
+('Supervisor'),
+('Professor'),
+('Mentor');
