@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task manager</title>
+    <style>
+        .completed{
+            text-decoration: line-through crimson;
+
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="enter task" id="taskInput">
+    <button type="button" id="btn" onclick="addTask()">ADD TASK</button>
+    <br />
+    <ul id="ul_list">
+
+    </ul>
+</body>
+<script>
+ function addTask() {
+     const inputText = document.getElementById("taskInput")
+     const ul_list = document.getElementById("ul_list")
+     const deleteButton = document.createElement('button')
+     const newli = document.createElement("li")
+
+     deleteButton.innerHTML = 'delete'
+     
+     newli.innerHTML = inputText.value
+     newli.appendChild(deleteButton)
+
+     deleteButton.onclick = function () {
+        newli.remove()
+     }
+     
+
+     ul_list.appendChild(newli)
+     inputText.value = ""
+
+     newli.onclick = function (params) {
+        newli.classList.toggle("completed")
+     }
+     
+     
+ }
+</script>
+</html>
+
+
+<!-- Perfect 👌 since you're practicing JavaScript, here’s a **hands-on DOM exercise** that will really strengthen your understanding.
+
+---
+
+# 🧩 DOM Exercise: Interactive Task List
+
+## 🎯 Goal
+
+Build a small **Task Manager** using DOM manipulation.
+
+---
+
+## 📋 Requirements
+
+### 1️⃣ HTML Structure
+
+Create:
+
+* An input field (to type a task)
+* An **Add Task** button
+* An empty `<ul>` list
+
+---
+
+### 2️⃣ When User Clicks "Add Task"
+
+You must:
+
+* Get the value from the input
+* Create a new `<li>`
+* Put the task text inside it
+* Add a **Delete** button inside the `<li>`
+* Append the `<li>` to the `<ul>`
+* Clear the input field
+
+---
+
+### 3️⃣ Delete Button
+
+When clicked:
+
+* Remove only that specific `<li>`
+
+---
+
+### 4️⃣ Extra Challenge (Important 🚀)
+
+Add these features:
+
+✅ If input is empty → show alert
+✅ When clicking the task text → toggle line-through (mark as completed)
+✅ Add a "Clear All" button
+✅ Show total task count above the list
+
+---
+
+# 🧠 What You Will Practice
+
+* `getElementById`
+* `querySelector`
+* `createElement`
+* `appendChild`
+* `remove()`
+* `classList.toggle()`
+* Event handling
+* Updating text dynamically
+* DOM traversal
+
+---
+
+# 🔥 Bonus Advanced Challenge
+
+After completing the basic version:
+
+* Press **Enter key** to add task
+* Store tasks in `localStorage`
+* Load saved tasks when page refreshes
+
+---
+
+# 🧪 Even Smaller Practice (If You Want Something Simpler First)
+
+Build a page with:
+
+* One button
+* One paragraph
+
+When button is clicked:
+
+* Change text
+* Change color
+* Increase font size
+* Toggle background color
+
+---
+
+If you want, tell me your current level (beginner / comfortable / advanced), and I’ll give you a DOM exercise perfectly matched to your level. 🚀 -->

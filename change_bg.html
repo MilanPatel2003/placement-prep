@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   
+    
+        
+    </style>
+</head>
+<body id="bg_color">
+    
+    <button onclick="changeBg()" id="btn">red</button>
+
+</body>
+<script>
+
+
+
+    const colors = ['red','green','yellow']
+    let colorsIndex = 0;
+function changeBg() {
+
+    document.getElementById("bg_color").style.backgroundColor = colors[colorsIndex]
+
+    document.getElementById("btn").innerHTML = colors[(colorsIndex + 1) % colors.length ]
+    
+    
+    colorsIndex++
+
+      if (colorsIndex == colors.length) {
+                colorsIndex = 0;
+       }
+}
+ 
+</script>
+</html>

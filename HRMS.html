@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      .main_container {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        justify-content: center;
+      }
+      .textContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        justify-content: center;
+      }
+      button {
+        padding: 10px;
+        border-radius: 10%;
+        font-size: x-large;
+        margin: 10px;
+      }
+      #checkIn {
+        background-color: green;
+      }
+      #checkOut {
+        background-color: red;
+      }
+      #breakIn {
+        background-color: yellow;
+      }
+      #breakOut {
+        background-color: orange;
+      }
+      .inActive {
+        opacity: 0.4;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .active {
+        opacity: 1;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main_container">
+      <button id="checkIn" onclick="checkedIn()">Check In</button>
+      <button id="checkOut" onclick="checkedOut()">Check Out</button>
+      <button id="breakIn" onclick="breakedIn()">Break In</button>
+      <button id="breakOut" onclick="breakedOut()">Break Out</button>
+    </div>
+    <div class="textContainer">
+      <p id="checkInText"></p>
+      <p id="breakInText"></p>
+      <p id="breakOutText"></p>
+      <p id="checkOutText"></p>
+      <p id="timer"></p>
+    </div>
+  </body>
+
+  <script>
+    const checkInBtn = document.getElementById("checkIn");
+    const checkOutBtn = document.getElementById("checkOut");
+    const breakInBtn = document.getElementById("breakIn");
+    const breakOutBtn = document.getElementById("breakOut");
+
+    const checkInText = document.getElementById("checkInText");
+    const checkOutText = document.getElementById("checkOutText");
+    const breakInText = document.getElementById("breakInText");
+    const breakOutText = document.getElementById("breakOutText");
+
+    let checkedInTime;
+    let checkedOutTime;
+    let breakedInTime;
+    let breakOutTime;
+
+    function defaultState() {
+      checkInBtn.classList.add("active");
+      checkInBtn.classList.remove("inActive");
+
+      checkOutBtn.classList.add("inActive");
+      checkOutBtn.classList.remove("active");
+
+      breakInBtn.classList.add("inActive");
+      breakInBtn.classList.remove("active");
+
+      breakOutBtn.classList.add("inActive");
+      breakOutBtn.classList.remove("active");
+    }
+
+    function checkedIn() {
+      checkInBtn.classList.add("inActive");
+      checkInBtn.classList.remove("active");
+      checkedInTime = new Date();
+      checkInText.innerHTML = `Checked in at ${checkedInTime.toLocaleTimeString()}`;
+      checkInText.style.opacity = 0.8;
+      checkInText.style.backgroundColor = "green";
+      checkInText.style.padding = "10px";
+      checkInText.style.borderRadius = "5%";
+
+      checkOutBtn.classList.add("active");
+      checkOutBtn.classList.remove("inActive");
+
+      breakInBtn.classList.add("active");
+      breakInBtn.classList.remove("inActive");
+    }
+
+    function breakedIn() {
+      breakInBtn.classList.remove("active");
+      breakInBtn.classList.add("inActive");
+      breakedInTime = new Date();
+      breakInText.innerHTML = `Breaked in at ${breakedInTime.toLocaleTimeString()}`;
+      breakInText.style.opacity = 0.8;
+      breakInText.style.backgroundColor = "yellow";
+      breakInText.style.padding = "10px";
+      breakInText.style.borderRadius = "5%";
+
+      checkOutBtn.classList.add("inActive");
+      checkOutBtn.classList.remove("active");
+
+      breakOutBtn.classList.add("active");
+      breakOutBtn.classList.remove("inActive");
+    }
+
+    function breakedOut() {
+      breakOutBtn.classList.add("inActive");
+      breakOutBtn.classList.remove("active");
+      breakOutTime = new Date();
+      breakOutText.innerHTML = `Break out at ${breakOutTime.toLocaleTimeString()}`;
+      breakOutText.style.opacity = 0.8;
+      breakOutText.style.backgroundColor = "orange";
+      breakOutText.style.padding = "10px";
+      breakOutText.style.borderRadius = "5%";
+
+      checkOutBtn.classList.add("active");
+      checkOutBtn.classList.remove("inActive");
+
+      breakInBtn.classList.add("active");
+      breakInBtn.classList.remove("inActive");
+    }
+
+    function checkedOut() {
+      const timer = document.getElementById("timer");
+      checkedOutTime = new Date();
+      checkOutText.innerHTML = `Checked out at ${checkedOutTime.toLocaleTimeString()}`;
+      checkOutText.opacity = 0.8;
+      checkOutText.style.backgroundColor = "red";
+      checkOutText.style.padding = "10px";
+      checkOutText.style.borderRadius = "5%";
+
+      checkInBtn.classList.add("inActive");
+      checkInBtn.classList.remove("active");
+
+      checkOutBtn.classList.add("inActive");
+      checkOutBtn.classList.remove("active");
+
+      breakInBtn.classList.add("inActive");
+      breakInBtn.classList.remove("active");
+
+      breakOutBtn.classList.add("inActive");
+      breakOutBtn.classList.remove("active");
+      let timeLeft = 5;
+      const countDown = setInterval(() => {
+        timer.innerText = timeLeft;
+        timeLeft--;
+      }, 1000);
+      setTimeout(() => {
+        checkInText.innerHTML = "";
+        checkOutText.innerHTML = "";
+        breakInText.innerHTML = "";
+        breakOutText.innerHTML = "";
+        checkInText.style.padding = "0px";
+        checkOutText.style.padding = "0px";
+        breakInText.style.padding = "0px";
+        breakOutText.style.padding = "0px";
+        clearInterval(countDown);
+
+        defaultState();
+      }, 6000);
+    }
+    defaultState();
+  </script>
+</html>

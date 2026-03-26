@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>ATM</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: blanchedalmond;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="cardNo" placeholder="enter card number" />
+      <input id="pin" placeholder="enter pin" />
+      <div id="details">
+        <ul>
+          <li id="name"></li>
+          <li id="balance"></li>
+        </ul>
+      </div>
+      <button type="submit" id="submit">submit</button>
+    </div>
+  </body>
+  <script>
+    const customerDetails = [
+      {
+        name: "Kaksha kalavadia",
+        cardNo: "123456789",
+        pin: "2004",
+        balance: "400000",
+      },
+      {
+        name: "Dev khunt",
+        cardNo: "4327687686",
+        pin: "2004",
+        balance: "300000",
+      },
+      {
+        name: "Savan Kansagara",
+        cardNo: "4327687686",
+        pin: "2004",
+        balance: "400000",
+      },
+    ];
+
+    const cardNo = document.getElementById("cardNo");
+    const pin = document.getElementById("pin");
+    const submitButton = document.getElementById("submit");
+    const userName = document.getElementById("name");
+    const userBalance = document.getElementById("balance");
+
+    submitButton.onclick = function () {
+      const user = customerDetails.find(function (i) {
+        return i.cardNo == cardNo.value && i.pin == pin.value;
+      });
+
+      if (user) {
+        console.log("successful");
+
+        customerDetails.forEach((i) => {
+          if (i.cardNo == cardNo.value) {
+            showDetails(i);
+          }
+        });
+      } else {
+        console.log("Invalid card number or PIN");
+      }
+    };
+
+    function showDetails(details) {
+      userName.innerHTML = details.name;
+      userBalance.innerHTML = `${details.balance} Rs.`;
+    }
+  </script>
+</html>

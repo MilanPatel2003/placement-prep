@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <div>
+        <input type="text" id="todoInput">
+        <ul id="todoContainer"></ul>
+    </div>
+    <input type="button" value="add" id="addTask" onclick="addTask()">
+</body>
+<script>
+    const todoContainer = document.getElementById("todoContainer")
+    function addTask() {
+        const todoInput = document.getElementById("todoInput").value
+        const newTask = document.createElement("li")
+        newTask.innerHTML = `
+        ${todoInput} <button type="button" onclick=removeTask(this)>remove</button>`
+        todoContainer.appendChild(newTask)   
+        todoInput.value = ""  
+    }
+    function removeTask(btn){
+        const taskRemoveLi = btn.closest("li")
+        taskRemoveLi.remove()
+        
+    }
+</script>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MY FORM</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+      }
+      td {
+        width: 250px;
+      }
+      input {
+        padding: 5px;
+        border-radius: 1%;
+        font-size: larger;
+        margin-bottom: 10px;
+      }
+      p {
+        color: red;
+        font-size: small;
+      }
+      #btn {
+        border-radius: 15px;
+      }
+      #btn:hover {
+        background-color: green;
+      }
+      #details {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>JOB APPLICATION</h1>
+      <form onsubmit="formSubmit(event)" title="JOB APPLICATION">
+        <table>
+          <tr>
+            <td>NAME:</td>
+            <td>
+              <input
+                type="text"
+                name="fname"
+                oninput="validateName()"
+                id="name"
+              />
+            </td>
+            <td><p id="nameError"></p></td>
+          </tr>
+
+          <tr>
+            <td>SURNAME:</td>
+            <td>
+              <input
+                type="text"
+                name="sname"
+                id="surname"
+                oninput="validateSurname()"
+              />
+            </td>
+            <td><p id="surnameError"></p></td>
+          </tr>
+          <tr>
+            <td>EMAIL:</td>
+            <td>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                oninput="validateEmail()"
+              />
+            </td>
+            <td><p id="emailError"></p></td>
+          </tr>
+
+          <tr>
+            <td>PHONE:</td>
+            <td>
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                oninput="validatePhone()"
+              />
+            </td>
+            <td><p id="phoneError"></p></td>
+          </tr>
+          <tr>
+            <td>ADDRESS:</td>
+            <td>
+              <textarea name="address" id="" cols="40" rows="5"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>NO. OF YEARS(EXPERIENCE):</td>
+            <td><input type="number" name="exp" id="" max="3" min="0" /></td>
+          </tr>
+          <tr>
+            <td>COMPANY NAME:</td>
+            <td><input type="text" name="cname" id="" /></td>
+          </tr>
+          <tr>
+            <td>ROLE</td>
+            <td>
+              <select name="role" id="role">
+                <option value="Frontend" selected>Frontend Developer</option>
+                <option value="Backend">Backend Developer</option>
+                <option value="FullStack">Full Stack Developer</option>
+                <option value="UIUX">UI/UX Designer</option>
+                <option value="DevOps">DevOps Engineer</option>
+                <option value="QA">QA Engineer</option>
+                <option value="Mobile">Mobile App Developer</option>
+                <option value="DataAnalyst">Data Analyst</option>
+                <option value="DataScientist">Data Scientist</option>
+                <option value="CyberSecurity">Cybersecurity Specialist</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <input type="submit" value="SUBMIT" id="btn" />
+            </td>
+          </tr>
+        </table>
+      </form>
+      <p id="details"></p>
+    </div>
+  </body>
+  <script>
+    // const name = document.getElementsByName("fname")[0];
+    // const surname = document.getElementsByName("sname")[0];
+    // const email = document.getElementsByName("email")[0];
+    // const phone = document.getElementsByName("phone")[0];
+    // const adress = document.getElementsByName("address")[0];
+    // const exp = document.getElementsByName("exp")[0];
+    // const companyName = document.getElementsByName("cname")[0];
+    // const role = document.getElementsByName("role")[0];
+    // const details = document.getElementById("details");
+
+    // const userDetails = {
+    //   name,
+    //   surname,
+    //   email,
+    //   phone,
+    //   adress,
+    //   exp,
+    //   companyName,
+    //   role,
+    // };
+
+    // function formSubmit(e) {
+    //   e.preventDefault();
+    //   details.innerHTML = `
+    //     name:${name.value} <br>
+    //     surname: ${surname.value}<br>
+    //     email:${email.value}<br>
+    //     phone:${phone.value}<br>
+    //     address: ${adress.value}<br>
+    //     experience: ${exp.value}<br>
+    //     companyname:${companyName.value}<br>
+    //     role:${role.value}<br>
+    //      `;
+    // }
+
+    function validateName() {
+      const name = document.getElementById("name").value;
+      const error = document.getElementById("nameError");
+
+      if (name === "") {
+        error.textContent = "*Name is required*";
+      } else if (!/^[a-zA-Z ]+$/.test(name)) {
+        error.textContent = "*Name should contain letters only*";
+      } else {
+        error.textContent = "";
+      }
+    }
+
+    function validateSurname() {
+      const surname = document.getElementById("surname").value;
+      const nameError = document.getElementById("surnameError");
+
+      if (surname === "") {
+        error.textContent = "*Surname is required*";
+      } else if (!/^[a-zA-Z ]+$/.test(surname)) {
+        nameError.textContent = "*Surname should contain letters only*";
+      } else {
+        nameError.textContent = "";
+      }
+    }
+
+    function validateEmail() {
+      const email = document.getElementById("email").value;
+      const emailError = document.getElementById("emailError");
+
+      if (email === "") {
+        emailError.textContent = "*Email is required*";
+      } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+        emailError.textContent = "*Email is invalid*";
+      } else {
+        emailError.textContent = "";
+      }
+    }
+
+    function validatePhone(params) {
+      const phone = document.getElementById("phone").value;
+      const phoneError = document.getElementById("phoneError");
+
+      if (phone === "") {
+        phoneError.textContent = "*phone no. is required*";
+      } else if (!/^\d{10}$/.test(phone)) {
+        phoneError.textContent = "*phone no. is invalid*";
+      } else {
+        phoneError.textContent = "";
+      }
+    }
+
+    function  validate(params) {
+      
+    }
+  </script>
+</html>
